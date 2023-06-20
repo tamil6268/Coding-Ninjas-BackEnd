@@ -57,11 +57,6 @@ module.exports={
     deleteDb,
     insertRequestDb,
     insertEntrolledUsersDb,
-<<<<<<< HEAD
     // findEntrolledUsersDb
     EntorlledUsersupdateDb
 }
-=======
-    findEntrolledUsersDb
-}
->>>>>>> a45755564793f90d3ab92f67392587e762f2b82b
