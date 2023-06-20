@@ -1,6 +1,6 @@
 const {MongoClient}=require('mongodb');
-// const url="mongodb+srv://ts7371797:Tamil123@cluster0.ubjr3my.mongodb.net/";
-const url="mongodb://127.0.0.1:27017";
+const url="mongodb+srv://ts7371797:Tamil123@cluster0.ubjr3my.mongodb.net/";
+// const url="mongodb://127.0.0.1:27017";
 const client=new MongoClient(url);
 
 const insertDb=async(data)=>{
@@ -57,6 +57,11 @@ module.exports={
     deleteDb,
     insertRequestDb,
     insertEntrolledUsersDb,
+<<<<<<< HEAD
     // findEntrolledUsersDb
     EntorlledUsersupdateDb
 }
+=======
+    findEntrolledUsersDb
+}
+>>>>>>> a45755564793f90d3ab92f67392587e762f2b82b
