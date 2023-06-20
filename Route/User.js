@@ -7,5 +7,5 @@ router.post('/register',UserController.Register);
 router.post('/login',UserController.Login);
 router.post('/requestCall',UserController.RequestCall);
 router.post('/User/Course',AuthPayment,UserController.EntrolledUsers);
-router.get('/User/Course',UserController.EntrolledUserController);
+router.post('/User/Course/EntrolledUser',UserController.EntrolledUserController);
 module.exports=router;

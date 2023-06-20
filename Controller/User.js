@@ -93,25 +93,45 @@ const RequestCall=async(req,res)=>{
   }
 }
 const EntrolledUsers=async(req,res)=>{
-  const data=req.body.state
+  // const data=req.body.state
   // const token=req.body.token
-  data.userDetails=req.token
-  console.log("User",data)
-  
-  try {
-    const DATA = await dbConnection.insertEntrolledUsersDb(data);
+  // data.userDetails=req.token
+  // console.log("User",data)
+  const data=req.token//getting old data by jwt
+  const filter=data.Name//by id trying to update the value
+  // const update={$set :req.body.value}
+  const update=req.body.value
+  const id=data._id;
+  const queryCheck = { _id: id };
+  const check=await dbConnection.findDb(queryCheck)
+  console.log(check)
+  try{
+    const DATA=await dbConnection.EntorlledUsersupdateDb(filter,update)
+    console.log(DATA)
     return res
-      .status(200)
-      .send({ message: "Request Recived ,We will connet you Soon..", userDetails: DATA });
-  } catch (error) {
-    console.log(error);
+             .status(200)
+             .send({message:"Congraculation for Enrolling Course",DATA})
+  }catch(error){
     return res
       .status(500)
-      .send({ message: "Something Went Wrong while storing in database" });
+      .send({ message: "User not Exist,Please try to login" });
   }
+  // try {
+  //   const DATA = await dbConnection.insertEntrolledUsersDb(data);
+  //   return res
+  //     .status(200)
+  //     .send({ message: "Request Recived ,We will connet you Soon..", userDetails: DATA });
+  // } catch (error) {
+  //   console.log(error);
+  //   return res
+  //     .status(500)
+  //     .send({ message: "Something Went Wrong while storing in database" });
+  // }
 }
 const EntrolledUserController=async(req,res)=>{
-      const storedData = await dbConnection.findEntrolledUsersDb({});
+      const data=req.body;
+      console.log("Entrolled User",data)
+      const storedData = await dbConnection.insertEntrolledUsersDb(data);
       res.send({message:"Entrolled-UserDetails",State:storedData})
 }
 module.exports = {

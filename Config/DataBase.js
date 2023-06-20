@@ -19,14 +19,6 @@ const insertRequestDb=async(data)=>{
     await client.close();
     return insert;
 }
-const insertEntrolledUsersDb=async(data)=>{
-    await client.connect();
-    const db=client.db('CodingNinja');//database name
-    const collection=db.collection('EntrolledUsers');//collection name
-    const insert=await collection.insertOne(data);
-    await client.close();
-    return insert;
-}
 const findDb=async(name)=>{
     await client.connect();
     const db=client.db('CodingNinja');//database name
@@ -35,13 +27,21 @@ const findDb=async(name)=>{
     await client.close();
     return find;
 }
-const findEntrolledUsersDb=async()=>{
+const insertEntrolledUsersDb=async(data)=>{
     await client.connect();
     const db=client.db('CodingNinja');//database name
-    const collection=db.collection('EntrolledUsers');//collection name
-    const find=await collection.find({}).toArray();
+    const collection=db.collection('EntrolledUsersProfile');//collection name
+    const insert=await collection.insertOne(data);
     await client.close();
-    return find;
+    return insert;
+}
+const EntorlledUsersupdateDb=async(filter,value)=>{
+    await client.connect();
+    const db=client.db('CodingNinja');
+    const collection=db.collection('UserDetails');
+    const update=await collection.updateMany(filter,value);
+    await client.close();
+    return update;
 }
 const deleteDb=async(name)=>{
     await client.connect();
@@ -57,5 +57,6 @@ module.exports={
     deleteDb,
     insertRequestDb,
     insertEntrolledUsersDb,
-    findEntrolledUsersDb
+    // findEntrolledUsersDb
+    EntorlledUsersupdateDb
 }

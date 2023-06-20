@@ -15,9 +15,7 @@ app.use(Router);
 app.post('/user',Auth,(req,res)=>{
     res.send({message:"Token Verified",user:req.token})
 })
-// app.post('/User/Course',AuthPayment,(req,res)=>{
-   
-// })
+
 app.listen(8080,()=>{
     console.log("Server Started at the port 8080")
 })
